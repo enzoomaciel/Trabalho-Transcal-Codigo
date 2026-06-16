@@ -16,7 +16,7 @@ pasta_saida = Path(__file__).resolve().parent
 # Condições iniciais e tamanho da malha
 Ti = 850.0          # Temperatura inicial da barra [°C]
 Tinf = 25.0         # Temperatura da água [°C]
-Delta = 0.0050   # Espaçamento entre nós [m]
+Delta = 0.005 # Espaçamento entre nós [m]
 
 # Dimensões da geometria em L [m]
 Lx = 0.10                  # Comprimento total na direção x
@@ -44,7 +44,6 @@ max_passos = 600000       # Número máximo de iterações
 
 def idx(x):
     # Converte uma dimensão física em índice da malha.
-    # Exemplo: se x = 0,10 m e Delta = 0,005 m, então o índice é 20.
     valor = x/Delta
     if abs(valor - round(valor)) > 1e-9:
         raise ValueError("Delta precisa dividir exatamente as dimensões da geometria.")
@@ -354,8 +353,7 @@ def calcular_regime_permanente(h, guardar=True):
 
 def buscar_h(tempo_alvo):
     # Procura um novo coeficiente de convecção para tentar reduzir
-    # o tempo do item (a) pela metade. Primeiro são feitos testes
-    # em valores pré-definidos e depois é aplicada bisseção.
+    # o tempo do item (a) pela metade.
     h_testes = [3000, 6000, 12000, 25000, 50000, 75000, 100000, 150000, 200000, 300000]
     resultados = []
 
@@ -517,9 +515,6 @@ def gif_temperatura(quadros, tempos):
     return arquivo
 
 if __name__ == "__main__":
-    # Executa os itens pedidos no trabalho e mede o custo computacional.
-    # time.time() registra o horário atual do computador em segundos.
-    # Subtraindo fim - início, obtemos quanto tempo real o código levou para rodar.
     inicio_total = time.time()
 
     par0 = parametros(h_inicial)
