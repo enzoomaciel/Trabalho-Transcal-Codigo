@@ -16,7 +16,7 @@ pasta_saida = Path(__file__).resolve().parent
 # Condições iniciais e tamanho da malha
 Ti = 850.0          # Temperatura inicial da barra [°C]
 Tinf = 25.0         # Temperatura da água [°C]
-Delta = 0.0020   # Espaçamento entre nós [m]
+Delta = 0.0050   # Espaçamento entre nós [m]
 
 # Dimensões da geometria em L [m]
 Lx = 0.10                  # Comprimento total na direção x
